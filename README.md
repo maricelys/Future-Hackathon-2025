@@ -5,7 +5,7 @@ Minimum value proposeition (MVP) for the Connected Future Hackathon 2025/ IN-AU 
 - Contributing
 - License
 ## Usage
-The mvp file contains code learnt from the Nokia Network as a code API Doc content https://networkascode.nokia.io/lionfish-nextjs/docs/getting-started and .
+The mvp file contains code learnt from the Nokia Network as a code API Doc content https://networkascode.nokia.io/lionfish-nextjs/docs/getting-started and API Playground site.
 The intent is to evolve this solution with the purpose of addressing the Digital Identity & Anti-Frauduse use case by verifying a given phone number, recent SIM/device changes, location and identity in real-time.
 ## Contributing
 Please add comments to code/ files when contributing.
