@@ -1,4 +1,4 @@
-# Project Name
+# Network-Verified Digital Identity & Safety Assistant for Vulnerable Australians
 Minimum value proposeition (MVP) for the Connected Future Hackathon 2025/ IN-AU team/ MySafe solution.
 ## Table of Contents
 - Usage
