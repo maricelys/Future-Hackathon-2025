@@ -9,6 +9,7 @@ client = nac.NetworkAsCodeClient(
 conn = http.client.HTTPSConnection("network-as-code.p-eu.rapidapi.com")
 
 payload = "{\"device\":{\"phoneNumber\":\"+61400500800\"}}"
+payload1 = "{"device":{"phoneNumber":"+61400500800"},"area":{"areaType":"CIRCLE","center":{"latitude":50.735851,"longitude":7.10066},"radius":50000}}"
 
 headers = {
     'x-rapidapi-key': "15cc20cd08msh7054d8a2a3ed868p146283jsn43ebc1478fe7",
@@ -16,9 +17,44 @@ headers = {
     'Content-Type': "application/json"
 }
 
-conn.request("POST", "/device-status/v0/roaming", payload, headers)
+# 1. SIM Swap
 
+# Check SIM swap
+conn.request("POST", "/passthrough/camara/v1/sim-swap/sim-swap/v0/check", payload, headers)
 res = conn.getresponse()
 data = res.read()
+print(data.decode("utf-8"))
 
+# Retrieve SIM swap date
+conn.request("POST", "/passthrough/camara/v1/sim-swap/sim-swap/v0/retrieve-date", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+# 2. Device Status
+
+# Roaming Status
+conn.request("POST", "/device-status/v0/roaming", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+# Retrieve susbcription
+conn.request("GET", "/device-status/v0/subscriptions/%7BsubscriptionId%7D", headers=headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+# Get connectivity status
+conn.request("POST", "/device-status/v0/connectivity", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+# 3. Location Verification
+
+# Get location verification
+conn.request("POST", "/location-verification/v0/verify", payload1, headers)
+res = conn.getresponse()
+data = res.read()
 print(data.decode("utf-8"))
