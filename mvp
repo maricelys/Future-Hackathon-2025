@@ -1,0 +1,24 @@
+import network_as_code as nac
+import http.client
+
+# We begin by creating a Network as Code client
+client = nac.NetworkAsCodeClient(
+    token="<15cc20cd08msh7054d8a2a3ed868p146283jsn43ebc1478fe7>"
+)
+
+conn = http.client.HTTPSConnection("network-as-code.p-eu.rapidapi.com")
+
+payload = "{\"device\":{\"phoneNumber\":\"+61400500800\"}}"
+
+headers = {
+    'x-rapidapi-key': "15cc20cd08msh7054d8a2a3ed868p146283jsn43ebc1478fe7",
+    'x-rapidapi-host': "network-as-code.nokia.rapidapi.com",
+    'Content-Type': "application/json"
+}
+
+conn.request("POST", "/device-status/v0/roaming", payload, headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
